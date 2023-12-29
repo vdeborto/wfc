@@ -100,7 +100,7 @@ class Tiling:
             if k % self._stride_eval == 0:
                 save_map(self.map_generator(), k=k)
                 
-    def superposition(self, possibilities: Possibilities) -> TileMap:
+    def _superposition(self, possibilities: Possibilities) -> TileMap:
         n_possibilities = len(possibilities)
         len_tile_reshape = int(math.sqrt(self._len_tile))
         tile_map = np.zeros((len_tile_reshape, len_tile_reshape))
@@ -117,7 +117,7 @@ class Tiling:
                         len_tile_reshape * self._width))
         for row in range(len(entropy_tiling)):
             for col in range(len(entropy_tiling[0])):
-                tile_map = self.superposition(entropy_tiling[row][col])
+                tile_map = self._superposition(entropy_tiling[row][col])
                 row_min = len_tile_reshape * row
                 row_max = row_min + len_tile_reshape
                 col_min = len_tile_reshape * col
