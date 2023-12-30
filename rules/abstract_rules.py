@@ -13,8 +13,8 @@ class Tile:
     
 Tiles = Sequence[Tile]
 Possibilities = Sequence[int]
-Constraints = Sequence[Mapping[str, Possibilities]]
 Directions = Literal['N', 'E', 'S', 'W']
+Constraints = Sequence[Mapping[Directions, Possibilities]]
 DIRECTIONS = typing.get_args(Directions)
 
 class AbstractRules(ABC):
